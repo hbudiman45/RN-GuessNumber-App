@@ -12,7 +12,7 @@ export default function App() {
   };
   let content = <StartScreen onStartGame={startGameHandler} />;
   if (userNumber) {
-    content = <GameScreen />;
+    content = <GameScreen userChoice={userNumber} />;
   }
   return (
     <View style={styles.screen}>

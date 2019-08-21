@@ -30,7 +30,7 @@ const StartScreen = props => {
     if (isNaN(chosenNumber) || chosenNumber < 0 || chosenNumber > 99) {
       Alert.alert(
         "Invalid Number!",
-        "Number has to be a number between 1 and 99",
+        "Number has to be a number between 1 and 9",
         [{ text: "OK", style: "destructive", onPress: resetInputHandler }]
       );
       return;
@@ -68,7 +68,7 @@ const StartScreen = props => {
             style={styles.textInput}
             autoFocus
             keyboardType="number-pad"
-            maxLength={2}
+            maxLength={1}
             onChangeText={inputHandler}
             value={value}
           />
