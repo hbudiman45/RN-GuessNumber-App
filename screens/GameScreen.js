@@ -18,13 +18,18 @@ const GameScreen = props => {
   const [currentGuess, setCurrentGuess] = useState(
     generateNumber(1, 10, props.userChoice)
   );
+  const [rounds, setRounds] = useState(0);
   const currentLow = useRef(1);
   const currentHigh = useRef(10);
 
+  const { userChoice, onGameOver } = props;
+
+  //   useEffect runs after rendering
   useEffect(() => {
-    if (currentGuess === props.userChoice) {
+    if (currentGuess === userChoice) {
+      onGameOver(rounds);
     }
-  });
+  }, [currentGuess, userChoice, onGameOver]);
 
   const nextGuessHandler = direction => {
     console.log(direction);
@@ -48,6 +53,7 @@ const GameScreen = props => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
+    setRounds(currRound => currRound + 1);
   };
 
   return (
