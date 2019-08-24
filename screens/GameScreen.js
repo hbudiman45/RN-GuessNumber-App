@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, Text, Button, StyleSheet, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import Card from "../components/Card";
 import NumberContainer from "../components/NumberContainer";
 import Styles from "../constants/default-styles";
+import MainButton from "../components/MainButton";
 
 const generateNumber = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -63,8 +66,12 @@ const GameScreen = props => {
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.card}>
         <View style={styles.buttonGroup}>
-          <Button title="Lower" onPress={() => nextGuessHandler("lower")} />
-          <Button title="Greater" onPress={() => nextGuessHandler("greater")} />
+          <MainButton onPress={() => nextGuessHandler("lower")}>
+            <Ionicons name="ios-arrow-round-down" size={24} />
+          </MainButton>
+          <MainButton onPress={() => nextGuessHandler("greater")}>
+            <Ionicons name="ios-arrow-round-up" size={24} />
+          </MainButton>
         </View>
       </Card>
     </View>
