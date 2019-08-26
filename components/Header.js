@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import Color from "../constants/Color";
 import TitleText from "./TitleText";
 
@@ -14,8 +14,8 @@ const Header = props => {
 const styles = StyleSheet.create({
   header: {
     width: "100%",
-    height: 90,
-    paddingTop: 36,
+    height: Dimensions.get("window").height * 0.09,
+    paddingTop: Dimensions.get("window").height * 0.03,
     backgroundColor: Color.grey2,
     alignItems: "center",
     justifyContent: "center"

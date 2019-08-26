@@ -6,7 +6,9 @@ import {
   TouchableWithoutFeedback,
   Button,
   Keyboard,
-  Alert
+  Alert,
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import Card from "../components/Card";
 import Input from "../components/Input";
@@ -54,39 +56,43 @@ const StartScreen = props => {
     );
   }
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
-    >
-      <View style={styles.screen}>
-        <Text style={styles.title}>Start A New Game</Text>
-        <Card style={styles.input}>
-          <Text>Select a number</Text>
-          <Input
-            style={styles.textInput}
-            autoFocus
-            keyboardType="number-pad"
-            maxLength={1}
-            onChangeText={inputHandler}
-            value={value}
-          />
-          <View style={styles.buttonGroup}>
-            <Button
-              title="Reset"
-              onPress={resetInputHandler}
-              color={Color.grey}
-            />
-            <Button
-              title="Confirm"
-              onPress={confirmInputHandler}
-              color={Color.secondary}
-            />
+    <ScrollView>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Keyboard.dismiss();
+          }}
+        >
+          <View style={styles.screen}>
+            <Text style={styles.title}>Start A New Game</Text>
+            <Card style={styles.input}>
+              <Text>Select a number</Text>
+              <Input
+                style={styles.textInput}
+                autoFocus
+                keyboardType="number-pad"
+                maxLength={1}
+                onChangeText={inputHandler}
+                value={value}
+              />
+              <View style={styles.buttonGroup}>
+                <Button
+                  title="Reset"
+                  onPress={resetInputHandler}
+                  color={Color.grey}
+                />
+                <Button
+                  title="Confirm"
+                  onPress={confirmInputHandler}
+                  color={Color.secondary}
+                />
+              </View>
+            </Card>
+            {confirmedOutput}
           </View>
-        </Card>
-        {confirmedOutput}
-      </View>
-    </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
