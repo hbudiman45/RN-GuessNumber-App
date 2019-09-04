@@ -6,7 +6,8 @@ import {
   Button,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  Platform
 } from "react-native";
 import Styles from "../constants/default-styles";
 import Color from "../constants/Color";
@@ -16,7 +17,11 @@ const GameOverScreen = props => {
   // if(Dimensions.get('window').width > 600) {
   //   return console.log('big screen')
   // }
-
+  if (Platform.OS === "android") {
+    console.log("android");
+  } else if (Platform.OS === "ios") {
+    console.log("ios");
+  }
   return (
     <ScrollView>
       <View style={styles.screen}>
